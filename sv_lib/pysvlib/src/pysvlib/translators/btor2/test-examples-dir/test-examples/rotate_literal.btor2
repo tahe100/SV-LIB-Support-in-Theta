@@ -1,0 +1,16 @@
+; SPDX-FileCopyrightText: 2019 makaimann
+;
+; SPDX-License-Identifier: BSD-3-Clause
+
+; Rotate by a literal amount to hit the Literal branch in ROL/ROR
+1 sort bitvec 8
+2 sort bitvec 1
+3 one 1
+4 zero 1
+5 state 1 x
+6 init 1 5 3
+7 next 1 5 3
+8 rol 1 5 3
+9 ror 1 5 3
+10 eq 2 8 9
+11 bad 10

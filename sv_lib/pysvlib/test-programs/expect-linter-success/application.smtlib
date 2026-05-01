@@ -1,0 +1,26 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+; Declare functions to test applications
+(declare-fun add (Int Int) Int)
+
+(declare-fun is_zero (Int) Bool)
+
+; Valid applications of declared functions
+(declare-var x Int)
+(declare-var y Int)
+(assert (= (add x y) (+ x y)))
+(assert (is_zero 0))
+
+; Valid applications of built-in functions
+(assert (= (+ x y) (add x y)))
+(assert (<= x y))
+(assert (and true (= x 0)))
+(assert (or false (= y 1)))
+(assert (not (= x y)))

@@ -1,0 +1,12 @@
+# This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+# https://gitlab.com/sosy-lab/benchmarking/sv-lib
+#
+# SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+#
+# SPDX-License-Identifier: Apache-2.0
+
+format_version: '2.0'
+input_files: ponylink-slaveTXlen-sat.btor2
+properties:
+  - expected_verdict: false
+    property_file: ../properties/safe.prp

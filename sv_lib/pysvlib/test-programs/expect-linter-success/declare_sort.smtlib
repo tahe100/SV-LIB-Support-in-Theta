@@ -1,0 +1,18 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+; Valid sort declarations with different arities
+(declare-sort Set 1)      ; Unary sort (takes 1 parameter)
+(declare-sort Pair 2)     ; Binary sort (takes 2 parameters)
+(declare-sort Unit 0)     ; Nullary sort (takes 0 parameters)
+
+; Use declared sorts
+(declare-const my_set (Set Int))
+(declare-const my_pair (Pair Int Bool))
+(declare-const unit Unit)

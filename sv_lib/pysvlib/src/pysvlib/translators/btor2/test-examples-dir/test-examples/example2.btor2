@@ -1,0 +1,18 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+1 sort bitvec 1
+2 sort bitvec 4
+3 ones 2
+4 zero 2
+5 state 2 x
+6 state 2 y
+7 init 2 5 4
+8 init 2 6 3
+9 or 2 5 6
+10 neq 1 9 6
+11 bad 10

@@ -1,0 +1,22 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+; Declare variables
+(declare-const x Int)
+(declare-const y Int)
+(declare-const flag Bool)
+
+; Valid variable references
+(assert (= x y))
+(assert (= (+ x y) 0))
+(assert (and flag (= x 1)))
+
+; Variables in complex expressions
+(assert (= (* x y) (+ x y)))
+(assert (ite flag x y))

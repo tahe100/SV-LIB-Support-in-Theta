@@ -1,0 +1,43 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic QF_BV)
+
+(define-proc
+    main
+    ()
+    ((s (_ BitVec 3)))
+    ((s_next (_ BitVec 3)))
+    (! (sequence
+        (assign (s (_ bv0 3)))
+        (! (sequence ) :tag  system-main-check-before-loop)
+        (! (while true
+            (! (sequence
+                (assign (s_next (bvadd s (_ bv2 3))))
+                (assign (s s_next))
+                (! (sequence ) :tag system-main-check)
+            )
+            :tag while-body)
+           )
+        :tag while-loop :invariant true)
+    )
+    :tag proc-0)
+)
+
+(annotate-tag
+     system-main-check-before-loop
+    :check-true (= (bvurem s (_ bv2 3)) (_ bv1 3))
+)
+
+(annotate-tag
+    system-main-check
+    :check-true (= (bvurem s (_ bv2 3)) (_ bv1 3))
+)
+
+
+(verify-call main ())
+(get-witness)

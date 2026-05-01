@@ -1,0 +1,35 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+(set-option :produce-witnesses true)
+
+(set-info :format-version "1.0")
+
+(define-proc
+    add
+    ()
+    ((x Int))
+    ((x0 Int) (y0 Int) (y Int))
+    (!
+        (sequence
+            (assume (<= 0 y0))
+            (assign (x x0) (y y0))
+            (!
+                (while
+                    (< 0 y)
+                    (assign
+                        (x (+ x 1))
+                        (y (- y 1))))
+                :tag while-1)
+            (! (sequence) :check-true (= x (+ x0 y0))))
+        :tag proc-add))
+
+(verify-call
+    add ())
+(get-witness)

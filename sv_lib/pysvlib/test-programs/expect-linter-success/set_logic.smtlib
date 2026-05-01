@@ -1,0 +1,24 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+; Valid logic declarations
+(set-logic LIA)    ; Linear Integer Arithmetic
+(set-logic QF_LIA) ; Quantifier-free LIA
+(set-logic LRA)    ; Linear Real Arithmetic
+(set-logic QF_LRA) ; Quantifier-free LRA
+
+; After setting logic, appropriate functions become available
+(declare-const x Int)
+(declare-const y Int)
+
+; Integer arithmetic (available in LIA logics)
+(assert (= (+ x y) 0))
+(assert (<= x y))
+
+; Real arithmetic (available in LRA logics)
+(declare-const r Real)
+(assert (= (+ r 1.0) 2.0))

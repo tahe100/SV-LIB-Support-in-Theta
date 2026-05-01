@@ -1,0 +1,41 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+(set-option :produce-witnesses true)
+
+(set-info :format-version "1.0")
+
+(define-proc
+    upto
+    ((n Int))
+    ((i Int))
+    ()
+    (!
+        (sequence
+            (assign (i 0))
+            (!
+                (while
+                    (< i n)
+                    (assign (i (+ i 1))))
+                :tag while-1))
+        :tag proc-add))
+
+(annotate-tag
+    upto
+    :ensures  (= i n))
+
+(annotate-tag
+    while-1
+    :not-recurring)
+
+(declare-const n Int)
+(assert (<= 0 n))
+
+(verify-call
+    upto (n))

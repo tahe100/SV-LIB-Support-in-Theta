@@ -1,0 +1,78 @@
+% This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+% https://gitlab.com/sosy-lab/benchmarking/sv-lib
+%
+% SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+%
+% SPDX-License-Identifier: Apache-2.0
+
+\definecolor{svblue}{HTML}{097cc3}   % primary blue
+\definecolor{svparens}{HTML}{075d92} % primary blue
+\definecolor{svdarkblue}{HTML}{053e61}
+
+\definecolor{svgreen}{HTML}{2eb82e}  % success green
+\definecolor{svdarkgreen}{HTML}{248f24}  % dark success green
+\definecolor{svred}{HTML}{cc2900}    % error red
+\definecolor{svdarkred}{HTML}{991f00}    % error red
+
+% Syntax highlighting for the language
+\lstdefinelanguage{SVLIB}{
+    basicstyle=\scriptsize\ttfamily,
+    % Define the keywords of the language for commands
+    keywords=[1]{
+        define-proc, define-procs-rec, declare-var,
+        annotate-tag, select-trace,
+        verify-call, get-witness, get-proof,
+    },
+    keywordstyle=[1]\color{svdarkblue}\bfseries,
+    % Define the keywords of the language for statements
+    keywords=[2]{
+        sequence, !, call, return,
+        label, goto, if, while, break, continue,
+        havoc, choice,
+        assign,
+        assume,
+    },
+    keywordstyle=[2]\color{svparens}\bfseries,
+    % Mark the properties in a different color
+    keywords=[3]{:check-true,
+                :invariant,
+                :not-recurring,
+                :recurring,
+                :requires,
+                :ensures,
+                :decreases,
+                :tag},
+    keywordstyle=[3]\color{svdarkgreen}\bfseries,
+    % Mark the SMT-LIB keywords in a different color
+    keywords=[4]{
+        set-logic, declare-sort, define-sort,
+        assert, check-sat, push, pop, exit,
+        declare-const, define-fun, define-fun-rec,
+        get-assertions, get-info, get-option, get-proof,
+        get-unsat-core, get-value, get-assignment,
+        set-info, set-option
+    },
+    keywordstyle=[4]\color{svdarkblue}\bfseries,
+    % Mark the SMT-LIB types in a different color
+    keywords=[5]{Bool, Int, Real, String, RegLan, UFBV, UFNIA, UFLIA, UFNRA, Array, Set, Bag},
+    keywordstyle=[5]\color{black}\bfseries,
+    % Now mark the SMT-LIB built-in functions in a different color
+    keywords=[6]{and, or, not, =>, =, <, <=, >, >=, +, -, *, div, mod, to_real, to_int, is_int,
+        select, store, union, intersect, setminus, subset, member, cardinality,
+        true, false
+    },
+    keywordstyle=[6]\color{black}\bfseries,
+    % Now mark some of the SMT-LIB constants
+    keywords=[7]{1, 0, -1},
+    keywordstyle=[7]\color{black}\bfseries,
+    % Now mark the trace commands
+    keywords=[8]{model, steps, incorrect-annotation, falsify-call, entry-proc, init-global-vars,
+                    init-proc-vars, leap, entry-call, choice, set-tag, using-annotation},
+    keywordstyle=[8]\color{svdarkred}\bfseries,
+    % Now continue setting up the language
+    sensitive=false, % keywords are not case-sensitive
+    morecomment=[l]{;}, % l is for line comment
+    alsoletter={-!:<=*+10},   % treat -, ( and ) as part of keywords
+    commentstyle=\color{gray}\ttfamily,
+    moredelim=**[s][\color{black}](){}, % treat (...) as delimiters
+} %

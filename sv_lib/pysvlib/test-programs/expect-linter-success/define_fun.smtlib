@@ -1,0 +1,19 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+; Valid function definitions with different complexities
+(define-fun double ((x Int)) Int (* 2 x))
+(define-fun is_positive ((x Int)) Bool (> x 0))
+(define-fun max ((a Int) (b Int)) Int (ite (>= a b) a b))
+
+; Use defined functions
+(declare-const x Int)
+(declare-const y Int)
+(assert (= (double x) (* 2 x)))
+(assert (is_positive (max x y)))

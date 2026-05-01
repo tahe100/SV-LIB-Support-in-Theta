@@ -1,0 +1,16 @@
+; SPDX-FileCopyrightText: 2019 makaimann
+;
+; SPDX-License-Identifier: BSD-3-Clause
+
+1 sort bitvec 1
+2 input 1 x
+3 zero 1
+4 one 1
+5 state 1 y
+6 init 1 5 3
+7 next 1 5 4
+8 and 1 2 5
+9 implies 1 2 5
+10 not 1 9
+11 constraint 8
+12 bad 10

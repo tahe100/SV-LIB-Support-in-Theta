@@ -1,0 +1,10 @@
+This file is part of SV-LIB Utils: A collection of utilities to work with SV-LIB programs
+https://gitlab.com/sosy-lab/benchmarking/sv-lib
+
+{% for copyright_line in copyright_lines %}
+{{ copyright_line }}
+{% endfor %}
+
+{% for expression in spdx_expressions %}
+SPDX-License-Identifier: {{ expression }}
+{% endfor %}

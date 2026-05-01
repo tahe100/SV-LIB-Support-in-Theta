@@ -1,0 +1,42 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic QF_AUFBV)
+(set-info :expected-verdict safe)
+
+(define-proc
+  btor2_proc
+  ((x (_ BitVec 1)) (y (_ BitVec 1)))
+  ()
+  ((x_local (_ BitVec 1))
+    (y_local (_ BitVec 1))
+    (x_local_next8 (_ BitVec 1))
+    (y_local_next9 (_ BitVec 1))
+    (op10 (_ BitVec 1))
+    (op11 (_ BitVec 1)))
+  (!
+    (sequence
+      (assign (x_local x) (y_local y))
+      (assign (x_local (_ bv0 1)) (y_local (_ bv1 1)))
+      (!
+        (while
+          true
+          (sequence
+            (assign (x_local_next8 (_ bv0 1)))
+            (assign (y_local_next9 (_ bv1 1)))
+            (assign (op10 (bvnot (bvcomp x_local y_local))))
+            (assign (op11 (bvnot op10)))
+            (! (sequence) :tag bad_state_12 :check-true (bvnot op11))
+            (assign (x_local x_local_next8) (y_local y_local_next9))))
+        :tag
+        btor2_proc_while_loop))
+    :tag
+    btor2_proc_body))
+(declare-var x (_ BitVec 1))
+(declare-var y (_ BitVec 1))
+(verify-call btor2_proc (x y))
+(get-witness)

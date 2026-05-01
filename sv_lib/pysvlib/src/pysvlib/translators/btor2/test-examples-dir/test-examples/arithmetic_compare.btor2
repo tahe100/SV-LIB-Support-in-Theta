@@ -1,0 +1,21 @@
+; SPDX-FileCopyrightText: 2019 makaimann
+;
+; SPDX-License-Identifier: BSD-3-Clause
+
+; Arithmetic and comparison operators on two 8-bit states
+1 sort bitvec 8
+2 sort bitvec 1
+3 one 1
+4 zero 1
+5 state 1 x
+6 state 1 y
+7 init 1 5 3
+8 init 1 6 4
+9 next 1 5 3
+10 next 1 6 4
+11 add 1 5 6
+12 sub 1 5 6
+13 sgt 2 11 12
+14 ult 2 5 6
+15 or 2 13 14
+16 bad 15

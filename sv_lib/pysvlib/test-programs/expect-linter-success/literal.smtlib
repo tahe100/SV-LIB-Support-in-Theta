@@ -1,0 +1,18 @@
+; This file is part of SV-LIB: A Standard Exchange Format for Software-Verification Tasks
+; https://gitlab.com/sosy-lab/benchmarking/sv-lib
+;
+; SPDX-FileCopyrightText: 2025 The SV-LIB Maintainers
+;
+; SPDX-License-Identifier: Apache-2.0
+
+(set-logic LIA)
+
+; Valid literals of different types
+(assert (= 42 42))           ; Integer literal
+(assert (= 3.14 3.14))       ; Real literal
+(assert true)                ; Boolean literal
+
+; Literals in expressions
+(declare-const x Int)
+(assert (= x 0))
+(assert (= (+ x 1) 1))
