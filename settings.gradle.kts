@@ -31,6 +31,7 @@ include(
     "frontends/petrinet-xsts",
     "frontends/dve-frontend",
     "frontends/chc-frontend",
+    "frontends/svlib-frontend",
     "frontends/llvm",
 
     "cfa/cfa",
