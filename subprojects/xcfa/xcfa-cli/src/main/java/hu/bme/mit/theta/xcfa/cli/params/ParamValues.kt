@@ -77,6 +77,7 @@ enum class InputType {
   LITMUS,
   CFA,
   BTOR2,
+  SVLIB,
 }
 
 enum class Backend {
